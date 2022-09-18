@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9af92850-648c-40a5-a920-801d57efa3be" name="Default Changelist" comment="" />
+    <list default="true" id="9af92850-648c-40a5-a920-801d57efa3be" name="Default Changelist" comment="init auth project">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +52,7 @@
     <property name="javascript.nodejs.core.library.configured.version" value="16.14.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="D:\fichiersSystem\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -90,11 +110,32 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+  </component>
   <component name="WindowStateProjectService">
     <state x="549" y="159" key="FileChooserDialogImpl" timestamp="1663497743646">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="159" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1663497743646" />
+    <state x="647" y="315" key="Github.ShareDialog" timestamp="1663498487413">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="647" y="315" key="Github.ShareDialog/0.0.1536.834@0.0.1536.834" timestamp="1663498487413" />
     <state width="1515" height="214" key="GridCell.Tab.0.bottom" timestamp="1663490291917">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -111,9 +152,13 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1515" height="214" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1663490291917" />
-    <state x="277" y="62" key="SettingsEditor" timestamp="1663497656759">
+    <state x="277" y="62" key="SettingsEditor" timestamp="1663498498746">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1663497656759" />
+    <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1663498498746" />
+    <state x="599" y="208" key="svn.repositoryBrowser" timestamp="1663498449225">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="599" y="208" key="svn.repositoryBrowser/0.0.1536.834@0.0.1536.834" timestamp="1663498449225" />
   </component>
 </project>

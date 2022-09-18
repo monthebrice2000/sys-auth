@@ -84,7 +84,7 @@ const connectDB = async (  ) => {
             port: "5432",
             ssl: true,
             idleTimeoutMillis: 0,
-            connectionTimeoutMillis: 200000,
+            connectionTimeoutMillis: 999999999999999999999999999999999,
         } );
 
         await client.connect().then( data => console.log( "connect successfully"));

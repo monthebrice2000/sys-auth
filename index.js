@@ -51,7 +51,7 @@ app.post( "/registration", async (req, res) => {
     insertDB( username, email, password , client )
         .then( success => res.status(200).json( { username, email, password } ) )
         .catch( error => res.status(404).json( { username, email, password } ));
-    await client.end()
+    await client.end();
 })
 
 app.post( "/login", async (req, res) => {
@@ -63,7 +63,7 @@ app.post( "/login", async (req, res) => {
     readDB( email, password , client )
         .then( success => res.status(200).json( {email, password } ) )
         .catch( error => res.status(404).json( { email, password } ));
-    await client.end()
+    await client.end();
 })
 
 // Setup our express server with env port
@@ -83,8 +83,8 @@ const connectDB = async (  ) => {
             password: "v2_3uB8N_9kGEykC9hBtAF6hGFckCCp4",
             port: "5432",
             ssl: true,
-            idleTimeoutMillis: 0,
-            connectionTimeoutMillis: 999999999999999999999999999999999,
+            idleTimeoutMillis: 30000,
+            connectionTimeoutMillis: 30000,
         } );
 
         await client.connect().then( data => console.log( "connect successfully"));

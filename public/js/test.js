@@ -18,14 +18,14 @@ $("#signup-btn").on("click", function(e){
                $(document.body).html("<h1>SUCCESS REGISTER</h1>");
                setTimeout(function(){
                    window.location.href = window.location.origin + "/login.html"
-               }, 3000)
+               }, 300)
 
            },
            error : ( error ) => {
                $(document.body).html("<h1>FAIL REGISTER</h1>")
                setTimeout(function(){
                    window.location.reload();
-               }, 3000)
+               }, 300)
            }
        })
    }
@@ -47,13 +47,15 @@ $("#signin-btn").on("click", function(e){
             contentType: "application/json;charset=utf-8",
             dataType:"json",
             success : ( data ) => {
+                $(formEl).find("#email").prop("value", "");
+                $(formEl).find("#password").prop("value", "");
                 window.location.href = window.location.origin + "/success.html"
             },
             error : ( error ) => {
                 $(document.body).html("<h1>FAIL LOGIN</h1>")
                 setTimeout(function(){
                     window.location.reload();
-                }, 3000)
+                }, 300)
             }
         })
     }

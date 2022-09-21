@@ -46,9 +46,9 @@ app.post( "/registration", async (req, res) => {
     //console.log( req.body )
     const { username, email, password } = req.body;
     //console.log( req.body )
-    connectDB().catch( error => res.status(404).json( { username, email, password } )  );
-    console.log( client )
-    insertDB( username, email, password , client )
+    await connectDB().catch( error => res.status(404).json( { username, email, password } )  );
+    //console.log( client )
+    await insertDB( username, email, password , client )
         .then( success => res.status(200).json( { username, email, password } ) )
         .catch( error => res.status(404).json( { username, email, password } ));
     await client.end();
@@ -58,9 +58,9 @@ app.post( "/login", async (req, res) => {
     //console.log( req.body )
     const {  email, password } = req.body;
     //console.log( req.body )
-    connectDB().catch( error => res.status(404).json( { email, password } )  );
-    console.log( client )
-    readDB( email, password , client )
+    await connectDB().catch( error => res.status(404).json( { email, password } )  );
+    //console.log( client )
+    await readDB( email, password , client )
         .then( success => res.status(200).json( {email, password } ) )
         .catch( error => res.status(404).json( { email, password } ));
     await client.end();
@@ -76,22 +76,21 @@ app.listen(port, ()=>{
 const connectDB = async (  ) => {
 
     try {
-        client = new pg.Pool( {
+        client = new pg.Client( {
             user: "monthedjeumoubrice2000",
             host: "db.bit.io",
             database: "monthedjeumoubrice2000/Users",
             password: "v2_3uB8N_9kGEykC9hBtAF6hGFckCCp4",
             port: "5432",
             ssl: true,
-            idleTimeoutMillis: 30000,
-            connectionTimeoutMillis: 30000,
+            connectionTimeoutMillis: 0,
         } );
 
-        await client.connect().then( data => console.log( "connect successfully"));
+        await client.connect().then( data => console.log( "connect successfully")).catch( err => { throw new Error("Connection Error") } );
     }catch( error ){
         client = null;
-        console.log( error );
-        throw new Error("Error Message");
+        console.log( "+++++++", error );
+        throw new Error( error.message || "Error Message");
     }
     return client;
 }

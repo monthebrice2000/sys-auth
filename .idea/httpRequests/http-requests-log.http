@@ -7,6 +7,17 @@ Content-Type: application/json
   "username": "aaaaaaaa"
 }
 
+###
+
+POST http://localhost:5000/registration
+Content-Type: application/json
+
+{
+  "email": "monthe@gmail.com",
+  "password": "paaa",
+  "username": "aaaaaaaa"
+}
+
 <> 2022-09-18T103805.200.json
 
 ###

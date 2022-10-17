@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "startOld": "nodemon index.js",
     "start:test": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
-    "start:type": "npm run compile && nodemon ./dist/src/server.js"
+    "compile-start": "npm run compile && nodemon ./dist/src/server.js",
+    "start" : "nodemon ./dist/src/server.js"
   },
   "author": "",
   "license": "ISC",

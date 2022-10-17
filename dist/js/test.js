@@ -1,80 +1,74 @@
-
 let auth0 = null;
 const fetchAuthConfig = () => fetch("/config/auth_config.json");
 const configureClient = async () => {
-    const response = await fetchAuthConfig();
-    const config = await response.json();
+  const response = await fetchAuthConfig();
+  const config = await response.json();
 
-    auth0 = await createAuth0Client({
-        domain: config.domain,
-        client_id: config.clientId
-    });
+  auth0 = await createAuth0Client({
+    domain: config.domain,
+    client_id: config.clientId,
+  });
 };
 
 // NEW
 const updateUI = async () => {
-    const isAuthenticated = await auth0.isAuthenticated();
+  const isAuthenticated = await auth0.isAuthenticated();
 
-    document.getElementById("btn-logout").disabled = !isAuthenticated;
-    document.getElementById("btn-login").disabled = isAuthenticated;
+  document.getElementById("btn-logout").disabled = !isAuthenticated;
+  document.getElementById("btn-login").disabled = isAuthenticated;
 };
 
 const login = async (screen_hint) => {
-    /*await auth0.loginWithRedirect({
+  /*await auth0.loginWithRedirect({
         redirect_uri: "http://localhost:5002/callback", //"https://monthebrice2000.github.io/my-portfolio/",
         //appState : window.location.origin,
         scope: "openid",
 
     });*/
-        window.location.href = "https://dev-nekgqc-w.us.auth0.com/authorize?response_type=code&client_id=fEsbnsodpluz0eOVyWhJ5Cbgg6Rwv3j1&redirect_uri=http://localhost:5002/callback&scope=openid%20name%20email%20profile";
-    //console.log( auth0 )
+  window.location.href =
+    "https://dev-nekgqc-w.us.auth0.com/authorize?response_type=code&client_id=fEsbnsodpluz0eOVyWhJ5Cbgg6Rwv3j1&redirect_uri=https://sysauth.herokuapp.com/callback&scope=openid%20name%20email%20profile";
+  //console.log( auth0 )
 };
 
 const logout = () => {
-    auth0.logout({
-        redirect_uri: "http://localhost:5002/callback"
-    });
+  auth0.logout({
+    redirect_uri: "http://localhost:5002/callback",
+  });
 };
 
-
-
 window.onload = async () => {
-    await configureClient();
+  await configureClient();
+
+  //updateUI();
+
+  const isAuthenticated = await auth0.isAuthenticated();
+  console.log(isAuthenticated);
+
+  if (isAuthenticated) {
+    // show the gated content
+    return;
+  }
+
+  // NEW - check for the code and state parameters
+  const query = window.location.search;
+  console.log(query);
+  console.log(query.includes("code="), query.includes("state="));
+  if (query.includes("code=") && query.includes("state=")) {
+    // Process the login state
+    await auth0.handleRedirectCallback();
 
     //updateUI();
 
-    const isAuthenticated = await auth0.isAuthenticated();
-    console.log( isAuthenticated )
+    // Use replaceState to redirect the user away and remove the querystring parameters
+    window.history.replaceState({}, document.title, "/");
+  }
+};
 
-    if (isAuthenticated) {
-        // show the gated content
-        return;
-    }
-
-    // NEW - check for the code and state parameters
-    const query = window.location.search;
-    console.log( query )
-    console.log( query.includes("code=") , query.includes("state=") )
-    if (query.includes("code=") && query.includes("state=")) {
-
-        // Process the login state
-        await auth0.handleRedirectCallback();
-
-        //updateUI();
-
-        // Use replaceState to redirect the user away and remove the querystring parameters
-        window.history.replaceState({}, document.title, "/");
-    }
-}
-
-
-
-
-$("#signup-btn").on("click", function(e){
-    e.preventDefault();
-    //logout();
-    //login("signup");
-    /*const formEl = $("#formAuthentication");
+$("#signup-btn").on("click", function (e) {
+  e.preventDefault();
+  //logout();
+  //login("signup");
+  /*const formEl = $("#formAuthentication");
    if( formEl.is(":valid")  ){
        const username = $(formEl).find("#username").prop("value");
        const email = $(formEl).find("#email").prop("value");
@@ -105,14 +99,13 @@ $("#signup-btn").on("click", function(e){
            }
        })
    }*/
-
 });
 
-$("#signin-btn").on("click", function(e){
-    e.preventDefault();
+$("#signin-btn").on("click", function (e) {
+  e.preventDefault();
 
-    login("login");
-   /* const formEl = $("#formAuthentication");
+  login("login");
+  /* const formEl = $("#formAuthentication");
     if( formEl.is(":valid")  ){
         const email = $(formEl).find("#email").prop("value");
         const password = $(formEl).find("#password").prop("value");
@@ -138,14 +131,13 @@ $("#signin-btn").on("click", function(e){
             }
         })
     }*/
-
 });
 
-$("#reset-btn").on("click", function(e){
-    e.preventDefault();
-    console.log("reset password");
-    //login("reset-password")
-    /*const resetObj = new Auth0ChangePassword({
+$("#reset-btn").on("click", function (e) {
+  e.preventDefault();
+  console.log("reset password");
+  //login("reset-password")
+  /*const resetObj = new Auth0ChangePassword({
         container:         "change-password-widget-container",                // required
         email:             "{{email | escape}}",                              // DO NOT CHANGE THIS
         csrf_token:        "{{csrf_token}}",                                  // DO NOT CHANGE THIS
@@ -182,4 +174,4 @@ $("#reset-btn").on("click", function(e){
             // passwordHistoryError: "Password has previously been used."
         }
     });*/
-})
+});

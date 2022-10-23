@@ -69,16 +69,16 @@
 
 <!-- Content -->
 
-<div class="container-xxl">
+<!--<div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner py-4">
 
-            <!-- Forgot Password -->
+            &lt;!&ndash; Forgot Password &ndash;&gt;
             <div class="card">
                 <div class="card-body">
-                    <!-- Logo -->
+                    &lt;!&ndash; Logo &ndash;&gt;
                     <div class="app-brand justify-content-center">
-                        <a href="index.html" class="app-brand-link gap-2">
+                        <a href="signup.html" class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
 
 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -118,16 +118,19 @@
                             <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
                         </a>
                     </div>
-                    <!-- /Logo -->
+                    &lt;!&ndash; /Logo &ndash;&gt;
                     <h4 class="mb-2">Forgot Password? 🔒</h4>
                     <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus="" required>
-                        </div>
-                        <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
-                    </form>
+                    <div id="change-password-widget-container">
+                        <form id="formAuthentication" class="mb-3" method="POST">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus="" required>
+                            </div>
+                            <button id="reset-btn" class="btn btn-primary d-grid w-100">Send Reset Link</button>
+                        </form>
+                    </div>
+
                     <div class="text-center">
                         <a href="login.html" class="d-flex align-items-center justify-content-center">
                             <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
@@ -136,44 +139,80 @@
                     </div>
                 </div>
             </div>
-            <!-- /Forgot Password -->
+            &lt;!&ndash; /Forgot Password &ndash;&gt;
         </div>
     </div>
-</div>
+</div>-->
+
+<h2>Signup Database Connection</h2>
+<input class="signup-email" />
+<input type="password" class="signup-password" />
+<input type="button" class="signup-db" value="Signup!" />
+<script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var webAuth = new auth0.WebAuth({
+        domain:       'dev-nekgqc-w.us.auth0.com',
+        clientID:     'OEN6uUTAa20yUs0eveSoGLc9OHzJ40B7'
+    });
+    $('.signup-db').click(function (e) {
+        e.preventDefault();
+        /*webAuth.signup({
+            connection: 'Username-Password-Authentication',
+            email: $('.signup-email').val(),
+            password: $('.signup-password').val(),
+            user_metadata: { plan: 'silver', team_id: 'a111' }
+        }, function (err) {
+            if (err) return alert('Something went wrong: ' + err.message);
+            return alert('success signup without login!')
+        });*/
+
+        webAuth.login({
+            realm: 'Username-Password-Authentication',
+            username: $('.signup-email').val(),
+            password: $('.signup-password').val(),
+            responseType: 'token id_token'
+        });
+    });
+</script>
 
 <!-- / Content -->
 
 
-
+<!--
 
 <div class="buy-now" style="display: none">
     <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank" class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
 </div>
 
 
-<!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
+&lt;!&ndash; Core JS &ndash;&gt;
+<script src="https://cdn.auth0.com/js/auth0-spa-js/1.20/auth0-spa-js.production.js"></script>
+<script src="https://cdn.auth0.com/js/change-password-1.5.min.js"></script>
+
+&lt;!&ndash; build:js assets/vendor/js/core.js &ndash;&gt;
 <script src="js/jquery.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/perfect-scrollbar.js"></script>
 
 <script src="js/menu.js"></script>
-<!-- endbuild -->
+&lt;!&ndash; endbuild &ndash;&gt;
 
-<!-- Vendors JS -->
+&lt;!&ndash; Vendors JS &ndash;&gt;
 
 
 
-<!-- Main JS -->
+&lt;!&ndash; Main JS &ndash;&gt;
 <script src="js/main.js"></script>
 
-<!-- Page JS -->
+&lt;!&ndash; Page JS &ndash;&gt;
 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" type="text/javascript"></script>
+<script src="./js/test.js" ></script>
 
-
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async="" defer="" src="js/buttons.js"></script>
+&lt;!&ndash; Place this tag in your head or just before your close body tag. &ndash;&gt;
+<script async="" defer="" src="js/buttons.js"></script>-->
 
 
 
